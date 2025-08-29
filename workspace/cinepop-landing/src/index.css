@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0A0A0B;
+  --color-crimson: #E1193A;
+  --color-rose: #FF4D6D;
+  --color-champagne: #F5E6C8;
+  --color-slate: #A3A3A3;
+}
+
+:root {
+  --ink: #0A0A0B;
+  --crimson: #E1193A;
+  --rose: #FF4D6D;
+  --champagne: #F5E6C8;
+  --slate: #A3A3A3;
+}
+
+/* Grain overlay */
+.grain::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background-image: url("/grain.png");
+  opacity: 0.05;
+  mix-blend-mode: soft-light;
+  z-index: 10;
+}
+
+/* Vignette */
+.vignette::after {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(1200px 600px at 80% 30%, rgba(225,25,58,0.15), transparent 60%), radial-gradient(900px 600px at 10% 40%, rgba(255,77,109,0.12), transparent 60%), radial-gradient(1200px 800px at 50% 50%, rgba(0,0,0,0.6), rgba(0,0,0,0.9));
+  z-index: 0;
+}
+
+/* Utility for focus ring */
+.focus-neon:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--crimson), white 10%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important }
+}
+
+/* Pulse variable for countdown */
+:root { --pulse-scale: 1 }
+.pulse {
+  transform: scale(var(--pulse-scale));
+  transition: transform 120ms ease-out;
+}
+
