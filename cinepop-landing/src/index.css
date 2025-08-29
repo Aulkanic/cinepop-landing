@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+/* Global background and gradient glow */
+:root {
+  color-scheme: dark;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+}
+
+.radial-bg {
+  position: relative;
+  isolation: isolate;
+}
+.radial-bg::before,
+.radial-bg::after {
+  content: "";
+  position: absolute;
+  inset: -20% -10% -10% -20%;
+  z-index: -1;
+  filter: blur(80px);
+  transform: translateZ(0);
+}
+.radial-bg::before {
+  background: radial-gradient(60% 60% at 0% 100%, rgba(236, 72, 153, 0.35) 0%, transparent 60%);
+}
+.radial-bg::after {
+  background: radial-gradient(60% 60% at 100% 0%, rgba(124, 58, 237, 0.35) 0%, transparent 60%);
+}
